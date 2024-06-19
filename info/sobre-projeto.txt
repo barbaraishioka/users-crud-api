@@ -1,0 +1,14 @@
+O que o projeto faz?
+Este projeto cria uma API REST simples para gerenciar usuários em um banco de dados MongoDB.
+
+A API oferece endpoints para:
+- Obter lista de usuários
+- Criar um novo usuário
+- Atualizar um usuário existente
+- Deletar um usuário
+
+Tecnologias utilizadas:
+- Node.js: Ambiente de execução JavaScript
+- Express: Framework para desenvolvimento de APIs RESTful
+- Prisma Client: ORM (Object-Relational Mapper) para interagir com bancos de dados
+- MongoDB: Banco de dados NoSQL

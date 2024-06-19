@@ -1,0 +1,41 @@
+Instalar extensões Thunder Client, Prisma e Prisma Insider
+Iniciar projeto: npm init -y
+Instalar express: npm i express
+Instalar dotenv: npm i dotenv
+
+Adicionar no package.json:
+"type":"module"
+"dev": "node --watch index.js"
+"start": "node index.js"
+
+Criar um arquivo index.js
+
+MongoDB > Projects > New Project > Create a Project > Create a cluster > Free > Editar Cluster name > Create deployment > Anotar Username e Password  > Create Database User > Choose a connection method > Drivers > Node.js > Anotar URL.
+
+Prisma.io > Get started > Start from scratch > MongoDB > Segue o passo a passo da documentação.
+
+import { PrismaClient } from "@prisma/client";
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const prisma = new PrismaClient();
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.use(express.json());
+
+// Middlewares
+// Middleware para verificar se o usuário existe - checkUserExists
+// Middleware de validação de campos obrigatórios - validateRequiredFields
+
+// Rotas
+// POST /users - Criar usuário
+// GET /users - Listar todos os usuários
+// GET /users/:id - Listar usuário por ID
+// PUT /users/:id - Atualizar usuário por ID
+// DELETE /users/:id - Deletar usuário por ID
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
+});

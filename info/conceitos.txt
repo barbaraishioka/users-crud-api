@@ -1,0 +1,237 @@
+O que é Node.js:
+Node.js é um ambiente de execução JavaScript lado servidor, que permite executar aplicações JavaScript.
+
+O que é V8:
+- O V8 é o motor de JavaScript do Google Chrome e Node.js, responsável por executar o código JavaScript. Ele é um interpretador de JavaScript que converte o código em código de máquina para ser executado pela CPU.
+
+O que é npm:
+Gerenciador de pacotes do Node.js. Ele permite que você instale e gerencie dependências de projetos Node.js.
+
+O que é express:
+Framework para aplicativos web Node.js.
+
+Para que serve o express:
+- Criação de rotas
+- Gerenciamento de requisições e respostas
+- Uso de middlewares para autenticação, autorização, etc.
+- Uso de templates para renderizar páginas HTML
+
+Criação de rotas:
+- Rotas são endpoints que a API oferece para que os clientes possam interagir com ela.
+
+Exemplo de rotas:
+- GET /users - Obter lista de usuários
+- GET /users/:id - Obter usuário buscando pelo id
+- POST /users - Criar um novo usuário
+- PUT /users/:id - Atualizar um usuário buscando pelo id
+- DELETE /users/:id - Deletar um usuário buscando pelo id
+
+Gerenciamento de requisições e respostas:
+O Express fornece métodos para lidar com requisições e respostas, como req.body, req.params, res.json(), res.status(), etc.
+
+O que são middlewares:
+São funções interceptadoras que podem ser executadas antes ou após uma rota ser executada.
+
+Para que serve funções middlewares:
+- Autenticação e autorização
+- Log de requisições
+- Tratamento de erros
+- Uso de templates para renderizar páginas HTML
+
+Como usar middlewares:
+- Utilizar o método use() do Express para adicionar middlewares à aplicação
+- Utilizar o método next() para chamar a próxima função de middleware na aplicação
+
+O que é um protocolo HTTP:
+- É um protocolo de comunicação entre clientes e servidores
+- Define como os dados devem ser formatados e transmitidos pela rede
+
+Exemplos de métodos HTTP:
+- GET - Obter recursos
+- POST - Criar recursos
+- PUT - Atualizar recursos
+- DELETE - Deletar recursos
+- HEAD - Obter metadados de recursos
+- OPTIONS - Obter opções de recursos
+- CONNECT - Estabelecer uma conexão
+- PATCH - Atualizar parcialmente recursos
+
+O que é um protocolo HTTPS:
+- É um protocolo de comunicação seguro entre clientes e servidores
+- Utiliza criptografia para proteger as informações transmitidas
+- É o protocolo padrão para sites que lidam com informações confidenciais
+
+O que é request:
+- É um objeto que representa a requisição recebida pelo servidor
+- Possui informações como método, URL, headers, body, etc.
+
+O que é response:
+- É um objeto que representa a resposta enviada pelo servidor
+- Possui informações como status, headers, body, etc.
+
+Para que serve json:
+- É amplamente utilizado em aplicações web para trocar dados entre cliente e servidor
+- É um formato de dados independente de linguagem
+
+Status HTTP:
+- 2xx Sucesso / Confirmação
+- 200 OK (Sucesso)
+- 201 Created (Criado com sucesso)
+- 202 Accepted (Aceito)
+
+- 4xx Erro do cliente
+- 400 Bad Request (Requisição inválida)
+- 401 Unauthorized (Não autorizado)
+- 403 Forbidden (Proibido)
+- 404 Not Found (Não encontrado)
+
+- 5xx Erro do servidor
+- 500 Internal Server Error (Erro interno do servidor)
+- 502 Bad Gateway
+- 503 Service Unavailable
+- 504 Gateway Timeout
+
+Query Params:
+- Definição: Parâmetros passados na URL após o ponto de interrogação ("?").
+- Objetivo: Realizar consultas simples, aplicar filtros ou paginação em resultados.
+- Acesso: Através do objeto req.query na requisição.
+- Exemplo:
+  - http://localhost:3000/users?nome=João&idade=30
+  - req.query.nome retorna "João".
+  - req.query.idade retorna "30".
+- Utilização:
+  - Filtrar resultados por nome, idade ou outros campos.
+  - Paginar resultados (ex: ?page=1&limit=10).
+  - Ordenar resultados por um campo específico (ex: ?sort=nome).
+
+Route Params:
+- Definição: Parâmetros presentes na própria rota para identificar um recurso específico.
+- Objetivo: Buscar, editar ou deletar um recurso único.
+- Acesso: Através do objeto req.params na requisição.
+- Exemplo:
+  - http://localhost:3000/users/123
+  - req.params.id retorna "123".
+-Utilização:
+  - Buscar um usuário específico por ID (ex: /users/:id).
+  - Editar um usuário específico por ID (ex: /users/:id).
+  - Deletar um usuário específico por ID (ex: /users/:id).
+
+Body Params:
+- Definição: Parâmetros passados no corpo da requisição, geralmente em formato JSON ou formulário.
+- Objetivo: Enviar dados mais complexos, como objetos ou arrays.
+- Acesso: Através do objeto req.body na requisição.
+- Observação: É necessário utilizar o middleware express.json() para habilitar o parse automático de JSON no corpo da requisição.
+- Exemplo:
+  - Requisição com corpo JSON:
+      {
+        "nome": "João Silva",
+        "idade": 35
+      }
+  - Código JavaScript:
+      app.use(express.json());
+      app.post('/users', (req, res) => {
+        const { nome, idade } = req.body;
+        console.log(nome, idade);
+        res.json({ message: 'Usuário criado com sucesso!' });
+      });
+- Utilização:
+  - Criar um novo usuário com nome, idade e outros dados.
+  - Atualizar informações de um usuário existente.
+  - Enviar dados de formulários complexos.
+
+Porque é necessário app.use(express.json()):
+- O middleware express.json() é necessário para que o Express possa parsear automaticamente o corpo
+da requisição em JSON. Isso permite que você acesse os dados enviados no corpo da requisição através do objeto req.body.
+- Sem o middleware express.json(), o req.body seria undefined, pois o Express não consegue parsear automaticamente o corpo da requisição em JSON.
+
+O que é parsear:
+- Parsear significa analisar e interpretar uma string ou um fluxo de dados.
+
+Para que guardar express() dentro de uma variável, exemplo const app = express():
+- Isso é feito para que você possa utilizar o objeto app para configurar e criar rotas para a sua aplicação. O objeto app é uma instância do Express.js, que fornece métodos e propriedades para criar e gerenciar a aplicação.
+- Exemplo: app.get(), app.post(), app.use(), etc.
+- Isso permite que você possa criar rotas, middleware e outros recursos para a sua aplicação de forma mais organizada e escalável.
+- Além disso, ao guardar o objeto express() em uma variável, você pode reutilizar essa variável em diferentes partes do seu código, o que pode ser útil em aplicações mais complexas.
+
+O que é instância:
+- Uma instância é um objeto criado a partir de uma classe ou função.
+
+O que faz o app.listen(3000):
+- O app.listen(3000) faz com que o servidor Express escute as requisições na porta 3000.
+- Exemplo: http://localhost:3000
+
+Para que serve o MongoDB:
+- O MongoDB é um banco de dados NoSQL que armazena dados em formato de documentos JSON
+
+O que é banco de dados relacionais e não relacionais:
+- Banco de dados relacionais: É um tipo de banco de dados que organiza os dados em tabelas relacionadas entre si, com chaves primárias e estrangeiras. Ex.: PostgreSQL, MySQL.
+- Banco de dados não relacionais: É um tipo de banco de dados que não segue a estrutura de tabelas relacionadas, armazenando os dados em formatos como documentos JSON, chave-valor ou grafos. Ex.: MongoDB, Cassandra.
+
+Para que serve o nodemon:
+- Ele reinicia automaticamente o servidor Node.js quando há alterações nos arquivos do projeto, isso evita a necessidade de reiniciar manualmente o servidor a cada alteração feita.
+- Instalação: npm i nodemon -D
+
+O que é devDependencies:
+- São dependências que são necessárias apenas durante o desenvolvimento do projeto, e não são necessárias em produção. Ex.: nodemon, jest, etc.
+- Representado pelo -D ou --save-dev 
+
+Para que serve node --watch arquivo.js:
+- Ele executa o arquivo.js e reinicia automaticamente quando há alterações no arquivo.
+
+Para que serve async e await:
+- Async e await são recursos do JavaScript que permitem escrever código assíncrono.
+- Async define uma função assíncrona.
+- Await é utilizado dentro de uma função async para aguardar a resolução de uma promessa (Promise) ou uma função async.
+
+O que é uma função assíncrona:
+- Uma função assíncrona é uma função que pode ser executada em segundo plano
+- Ela não bloqueia a execução do código, permitindo que outras tarefas sejam executadas simultaneamente.
+- Exemplo: requisições HTTP, leitura de arquivos, operações de banco de dados.
+
+O que é Promise:
+- Uma Promise é um objeto que representa o resultado de uma operação assíncrona.
+
+Para que serve o Prisma:
+- O Prisma é uma ferramenta de ORM (Object-Relational Mapping) que ajuda a interagir com bancos de dados relacionais, como PostgreSQL, MySQL e SQLite.
+
+Para que serve @prisma/client:
+- O @prisma/client é uma biblioteca JavaScript que fornece uma API para interagir com o banco de dados gerenciado pelo Prisma. Ele permite executar consultas, criar e atualizar registros, e muito mais.
+
+Comando npx prisma db push:
+- Ele aplica as alterações feitas no schema do Prisma para o banco de dados.
+
+Comando npx prisma studio:
+- Ele inicia o Prisma Studio, uma interface gráfica que permite visualizar e manipular os dados do banco de dados de forma interativa.
+
+Arquivo schema.prisma:
+- É o arquivo de configuração do Prisma, onde são definidas as estruturas das tabelas do banco de dados.
+- Ele é utilizado pelo Prisma para gerar as migrations e para fornecer uma API para interagir com o banco de dados.
+
+Arquivo .env:
+- É um arquivo que armazena variáveis de ambiente do projeto.
+- Ele é utilizado para armazenar informações sensíveis, como senhas e chaves de API
+
+Arquivo .gitignore:
+- É um arquivo que lista os arquivos e diretórios que devem ser ignorados pelo Git.
+- Ele é utilizado para evitar que arquivos desnecessários sejam commitados no repositório
+
+Arquivo package.json:
+- É um arquivo que contém informações sobre o projeto, como o nome, versão, dependências e scripts.
+- Ele é utilizado pelo npm para gerenciar as dependências do projeto.
+
+Arquivo package-lock.json:
+- É um arquivo que contém informações sobre as dependências do projeto, incluindo as versões.
+- Ele é utilizado pelo npm para garantir que as dependências sejam instaladas com as versões corretas.
+
+Pasta node_modules:
+- É uma pasta que armazena as dependências do projeto, instaladas pelo npm.
+- Ela é criada automaticamente quando as dependências são instaladas.
+
+Para que serve npm install dotenv:
+O dotenv é um pacote que permite você carregar variáveis de ambiente de um arquivo .env
+Ele é muito útil para separar as configurações do seu projeto em um arquivo separado.
+
+Como acessar os dados do dotenv:
+- Você pode acessar os dados do dotenv utilizando o objeto process.env
+- Exemplo: const dbUrl = process.env.DATABASE_URL;
+- O objeto process.env é preenchido com as variáveis de ambiente carregadas do arquivo.env
